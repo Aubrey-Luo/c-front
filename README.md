@@ -14,3 +14,8 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 前台系统：PC 端前台系统 / 移动端前台系统
 
 根本性的设计区别 -> 前台讲究个性化，后台偏同质化，导致目前市面上的通用组件库更多是 后台 PC 系统组件库，而前台系统需要开发一个自己的组件库
+
+### 中台组件库 / 物料库概念与通用组件
+
+中台组件库：Element-UI、Ant Design
+中台物料库：物料市场，像商城一样，Alibaba Material Center、Taro

@@ -1,6 +1,6 @@
 <template>
   <svg aria-hidden="true">
-    <use :xlink:href="name" />
+    <use :xlink:href="symbolId" :class="fillClass" :fill="color" />
   </svg>
 </template>
 
@@ -24,5 +24,5 @@ const props = defineProps({
 })
 
 // 真实显示的 svg 图标（拼接 #icon-）
-computed()
+const symbolId = computed(() => `#icon-${props.name}`)
 </script>
