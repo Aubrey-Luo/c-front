@@ -6,12 +6,10 @@ const service = axios.create({
   timeout: 5000
 })
 
-console.log(import.meta.env.VITE_BASE_API)
-
 // 请求拦截器
 service.interceptors.request.use((config) => {
   // 添加 icode
-  config.headers.icode = '01C583E2C21EC3BA'
+  config.headers.icode = '217D276AA198034F'
   // 必须返回 config
   return config
 })
