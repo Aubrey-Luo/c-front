@@ -1,5 +1,5 @@
 import { getCategory } from '@/api/category'
-import { ALL_CATEGORY_ITEM } from '@/constants'
+import { ALL_CATEGORY_ITEM, CATEGORY_NOMAR_DATA } from '@/constants'
 
 export default {
   // 独立作用域
@@ -7,7 +7,10 @@ export default {
   state: () => {
     // navigationBar 展示的数据源
     return {
-      categorys: [ALL_CATEGORY_ITEM]
+      // 1. 让 categorys 具备一个初始化数据
+      // 2. 从服务端获取数据，替换初始化数据
+      // 3. 为了防止初始化数据太老，把每次获取到的新数据都作为下一次的初始化数据
+      categorys: CATEGORY_NOMAR_DATA
     }
   },
   mutations: {
