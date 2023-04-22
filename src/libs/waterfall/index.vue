@@ -18,7 +18,7 @@
           top: item._style?.top + 'px'
         }"
       >
-        <slot :item="item" width="columnWidth" :index="index" />
+        <slot :item="item" :width="columnWidth" :index="index" />
       </div>
     </template>
     <!-- 加载中 -->
@@ -156,7 +156,7 @@ const waitImgComplete = () => {
  * 不需要图片预加载
  */
 const useItemHeight = () => {
-  itemHeight = []
+  itemHeights = []
   // 拿到所有的元素
   let itemElements = [...document.getElementsByClassName('m-waterfall-item')]
   // 计算 item 高度
@@ -265,7 +265,7 @@ const reset = () => {
     props.data.forEach((item) => {
       item._style = null
     })
-  }, 100)
+  }, 200)
 }
 /**
  * 监听列数的变化
@@ -277,7 +277,8 @@ watch(
       // 在 picturePreReading 为 true 的前提下，需要首先为列宽滞空，列宽滞空之后，会取消瀑布流渲染
       columnWidth.value = 0
       // 等待页面渲染之后，重新执行计算。否则在 item 没有指定过高度的前提下，计算出的 item 高度会不正确
-      nextTick(reset)
+      // nextTick(reset)
+      reset()
     } else {
       reset()
     }
