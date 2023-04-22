@@ -31,9 +31,27 @@ export const CATEGORY_NOMAR_DATA = [
     name: '家居/家装'
   }
 ]
-// 极简白
-export const THEME_LIGHT = 'THEME_LIGHT'
-// 极夜黑
-export const THEME_DARK = 'THEME_DARK'
-// 跟随系统
-export const THEME_SYSTEM = 'THEME_SYSTEM'
+// 暗黑主题
+export const THEME_DARK = 'dark'
+// 浅色主题
+export const THEME_LIGHT = 'light'
+// 系统主题
+export const THEME_SYSTEM = 'system'
+
+// 登录方式
+export const LOGIN_TYPE_USERNAME = 'username'
+export const LOGIN_TYPE_OAUTH_NO_REGISTER_CODE = 204
+export const LOGIN_TYPE_QQ = 'QQ'
+export const LOGIN_TYPE_WX = 'WX'
+
+// STS 上传数据
+export const REGION = 'oss-cn-beijing'
+export const BUCKET = 'imooc-front'
+
+// 兔小巢反馈地址
+export const FEEDBACK_URL = 'https://support.qq.com/product/383681'
+
+// 微博APP Key
+export const WEI_BO_APP_KEY = '3454329089'
+// 微博用户的 UID
+export const WEI_BO_UID = '5984245953'

@@ -1,5 +1,7 @@
 <template>
-  <div class="w-full bg-white border-b border-b-zinc-200 px-2 py-1">
+  <div
+    class="w-full bg-white dark:bg-zinc-800 border-b border-b-zinc-200 dark:border-b-zinc-700 px-2 py-1 duration-500"
+  >
     <div class="flex items-center">
       <img
         class="h-4 cursor-pointer mr-2"
@@ -7,8 +9,8 @@
         alt=""
         @click="onToHome"
       />
-      <header-search-vue></header-search-vue>
-      <header-theme-vue></header-theme-vue>
+      <header-search-vue class="mr-1"></header-search-vue>
+      <header-theme-vue class="mr-1"></header-theme-vue>
       <header-my></header-my>
     </div>
   </div>

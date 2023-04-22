@@ -17,6 +17,5 @@
 </template>
 
 <script setup>
-
 defineEmits(['onItemClick'])
 </script>

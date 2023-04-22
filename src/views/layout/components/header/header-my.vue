@@ -2,7 +2,7 @@
   <m-popover class="flex items-center" placement="bottom-left">
     <template #reference>
       <div
-        class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100"
+        class="relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100 dark:hover:bg-zinc-900"
       >
         <!-- 头像 -->
         <img
@@ -33,7 +33,7 @@
       >
         <m-svg-icon
           :name="item.icon"
-          class="w-1.5 h-1.5 mr-1"  
+          class="w-1.5 h-1.5 mr-1"
           fillClass="fill-zinc-900 dark:fill-zinc-300"
         ></m-svg-icon>
         <span class="text-zinc-800 dark:text-zinc-300 text-sm">{{
