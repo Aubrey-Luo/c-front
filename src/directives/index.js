@@ -11,7 +11,7 @@ export default {
       const arr = key.split('/')
       const name = arr[arr.length - 1].replace('.js', '')
       // 完成注册
-      app.directives(name, value.default)
+      app.directive(name, value.default)
     }
   }
 }
