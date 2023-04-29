@@ -10,13 +10,18 @@ export default {
    */
   themeType: (state) => state.theme.themeType,
   /**
-   * category选中项
+   * category 选中项
    */
   currentCategory: (state) => state.app.currentCategory,
   /**
-   * category选中项下标
+   * category 选中项下标
    */
   currentCategoryIndex: (state, getters) => {
+    console.log(
+      getters.categorys.findIndex(
+        (item) => item.id === getters.currentCategory.id
+      )
+    )
     return getters.categorys.findIndex(
       (item) => item.id === getters.currentCategory.id
     )

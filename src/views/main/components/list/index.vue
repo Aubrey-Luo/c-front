@@ -22,9 +22,10 @@
 
 <script setup>
 import { getPexelsList } from '@/api/pexels'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import itemVue from './item.vue'
 import { isMobileTerminal } from '@/utils/flexible'
+import store from '@/store'
 
 /**
  * 构建数据请求
@@ -59,12 +60,35 @@ const getPexelsData = async () => {
     pexelsList.value.push(...res.list)
   }
   // 判断数据是否全部加载完成
-  if (pexelsList.value.length === res.total){
+  if (pexelsList.value.length === res.total) {
     isFinished.value = true
   }
   // 修改 loading 标记
   loading.value = false
 }
+
+/**
+ * 通过此方法修改 query，重新发起请求
+ */
+const resetQuery = (newQuery) => {
+  query = { ...query, ...newQuery }
+  // 重置状态
+  isFinished.value = false
+  pexelsList.value = []
+}
+
+/**
+ * 监听 currentCategory 的变化
+ */
+watch(
+  () => store.getters.currentCategory,
+  (currentCategory) => {
+    resetQuery({
+      page: 1,
+      categoryId: currentCategory.id
+    })
+  }
+)
 </script>
 
 <style lang="scss" scoped></style>
