@@ -27,7 +27,7 @@ export default {
     )
   },
   /**
-   * 搜索记录
+   * 搜索历史
    */
   historys: (state) => state.search.historys,
   /**
