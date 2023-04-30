@@ -1,6 +1,6 @@
 <template>
   <div class="w-full">
-    <m-search v-model="inputValue">
+    <m-search v-model="inputValue" @search="onSearchHandler">
       <template #dropdown>
         <div>
           <!-- 搜索提示 -->
