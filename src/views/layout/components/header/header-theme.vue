@@ -77,7 +77,7 @@ const svgIconName = computed(() => {
   const findTheme = themeArr.find((item) => {
     return item.type === store.getters.themeType
   })
-  return findTheme?.icon
+  return findTheme?.icon || THEME_LIGHT
 })
 </script>
 
