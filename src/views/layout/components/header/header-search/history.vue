@@ -9,21 +9,21 @@
         @click="onDeleteAllClick"
       ></m-svg-icon>
     </div>
-  </div>
 
-  <div class="flex flex-wrap">
-    <div
-      v-for="(item, index) in $store.getters.historys"
-      :key="item"
-      class="mr-2 mb-1.5 flex items-center cursor-pointer bg-zinc-100 px-1.5 py-0.5 text-zinc-900 text-sm font-bold rounded-sm duration-300 hover:bg-zinc-200"
-      @click="onItemClick(item)"
-    >
-      <span>{{ item }}</span>
-      <m-svg-icon
-        name="input-delete"
-        class="w-2.5 h-2.5 p-0.5 ml-1 duration-300 rounded-sm hover:bg-zinc-100"
-        @click.stop="onDeleteClick(index)"
-      ></m-svg-icon>
+    <div class="flex flex-wrap">
+      <div
+        v-for="(item, index) in $store.getters.historys"
+        :key="item"
+        class="mr-2 mb-1.5 flex items-center cursor-pointer bg-zinc-100 px-1.5 py-0.5 text-zinc-900 text-sm font-bold rounded-sm duration-300 hover:bg-zinc-200"
+        @click="onItemClick(item)"
+      >
+        <span>{{ item }}</span>
+        <m-svg-icon
+          name="input-delete"
+          class="w-2.5 h-2.5 p-0.5 ml-1 duration-300 rounded-sm hover:bg-zinc-100"
+          @click.stop="onDeleteClick(index)"
+        ></m-svg-icon>
+      </div>
     </div>
   </div>
 </template>
@@ -34,7 +34,6 @@ const EMITS_ITEM_CLICK = 'itemClick'
 
 <script setup>
 import { useStore } from 'vuex'
-import { confirm } from '@/libs'
 
 const emits = defineEmits([EMITS_ITEM_CLICK])
 const store = useStore()
@@ -42,9 +41,10 @@ const store = useStore()
  * 删除所有记录
  */
 const onDeleteAllClick = () => {
-  confirm('要删除所有历史记录吗？').then(() => {
-    store.commit('search/deleteAllHistory')
-  })
+  store.commit('search/deleteAllHistory')
+  // confirm('要删除所有历史记录吗？').then(() => {
+  //   store.commit('search/deleteAllHistory')
+  // })
 }
 
 /**

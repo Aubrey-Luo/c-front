@@ -9,6 +9,11 @@
             v-show="inputValue"
             @itemClick="onSearchHandler"
           ></hint-vue>
+          <!-- 最近搜索 -->
+          <history-vue
+            v-show="!inputValue"
+            @itemClick="onSearchHandler"
+          ></history-vue>
         </div>
       </template>
     </m-search>
@@ -18,6 +23,7 @@
 <script setup>
 import { ref } from 'vue'
 import hintVue from './hint.vue'
+import historyVue from './history.vue'
 import { useStore } from 'vuex'
 
 const store = useStore()
@@ -31,7 +37,6 @@ const onSearchHandler = (val) => {
   if (val) {
     // 保存历史记录
     store.commit('search/addHistory', val)
-    console.log('触发 searchText 变化')
     // 触发 searchText 变化
     store.commit('app/changeSearchText', val)
   }
