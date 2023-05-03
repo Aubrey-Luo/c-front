@@ -5,7 +5,7 @@ export default [
     // 配置对象
     popover: {
       // 标题
-      title: 'logo',
+      title: 'LOGO',
       // 描述
       description: '点击可返回首页'
     }
