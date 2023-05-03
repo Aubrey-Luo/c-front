@@ -2,7 +2,8 @@
   <div class="fixed bottom-10 right-2">
     <!-- 引导页 -->
     <div
-      class="w-4 h-4 mb-1 bg-white dark:bg-zinc-900 border dark:border-0 border-zinc-200 rounded-full flex justify-center items-center cursor-pointer duration-200 group hover:shadow-lg"
+      class="guide-start w-4 h-4 mb-1 bg-white dark:bg-zinc-900 border dark:border-0 border-zinc-200 rounded-full flex justify-center items-center cursor-pointer duration-200 group hover:shadow-lg"
+      @click="onGuideClick"
     >
       <m-svg-icon
         name="guide"
@@ -14,7 +15,7 @@
     <m-popover class="flex items-center guide-feedback" placement="top-left">
       <template #reference>
         <div
-          class="w-4 h-4 bg-white dark:bg-zinc-900 border dark:border-0 border-zinc-200 rounded-full flex justify-center items-center cursor-pointer duration-200 group hover:shadow-lg"
+          class="guide-feedback w-4 h-4 bg-white dark:bg-zinc-900 border dark:border-0 border-zinc-200 rounded-full flex justify-center items-center cursor-pointer duration-200 group hover:shadow-lg"
         >
           <m-svg-icon
             name="feedback"
@@ -41,6 +42,48 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import Driver from 'driver.js'
+import 'driver.js/dist/driver.min.css'
+import steps from './steps'
+import { onMounted } from 'vue'
+import { FEEDBACK_URL } from '@/constants'
 
-<style lang="scss" scoped></style>
+/**
+ * 引导页处理
+ */
+let driver = null
+onMounted(() => {
+  driver = new Driver({
+    // 禁止点击蒙版关闭
+    allowClose: false,
+    closeBtnText: '关闭',
+    nextBtnText: '下一个',
+    prevBtnText: '上一个'
+  })
+})
+
+/**
+ * 开始引导
+ */
+const onGuideClick = () => {
+  // 指定引导步骤
+  driver.defineSteps(steps)
+  // 开始
+  driver.start()
+}
+
+/**
+ * 反馈处理
+ */
+const onToFeedback = () => {
+  window.open(FEEDBACK_URL, '_blank')
+}
+</script>
+
+<style lang="scss" scoped>
+.driver-fix-stacking {
+  position: fixed;
+  z-index: 100004 !important;
+}
+</style>

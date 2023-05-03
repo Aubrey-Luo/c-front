@@ -1,5 +1,5 @@
 <template>
-  <m-popover>
+  <m-popover class="guide-theme" placement="bottom-left">
     <!-- 具名插槽：触发弹出层的视图 -->
     <template #reference>
       <m-svg-icon

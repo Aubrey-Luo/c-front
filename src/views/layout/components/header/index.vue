@@ -5,7 +5,7 @@
     <div class="flex items-center">
       <img
         v-lazy
-        class="h-4 cursor-pointer mr-2"
+        class="guide-home h-4 cursor-pointer mr-2"
         src="@/assets/images/nuist.jpg"
         alt=""
         @click="onToHome"
