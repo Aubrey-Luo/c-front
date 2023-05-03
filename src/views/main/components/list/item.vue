@@ -1,8 +1,11 @@
 <template>
   <div class="bg-white :dark:bg-zinc-900 xl:dark:bg-zinc-800 rounded pb-1">
-    <div class="relative w-full rounded cursor-zoom-in group" :style="{
-      backgroundColor: randomRGB()
-    }">
+    <div
+      class="relative w-full rounded cursor-zoom-in group"
+      :style="{
+        backgroundColor: randomRGB()
+      }"
+    >
       <!-- 图片 -->
       <img
         v-lazy
@@ -32,6 +35,7 @@
           size="small"
           icon="download"
           iconClass="fill-zinc-900 dark:fill-zinc-200"
+          @click="onDownLoad"
         ></m-button>
         <!-- 全屏 -->
         <m-button
@@ -49,7 +53,7 @@
     </p>
     <!-- 作者信息 -->
     <div class="flex items-center mt-1 px-1">
-      <img v-lazy class="h-2 w-2 rounded-full" :src="data.avatar" src="" alt="" />
+      <img v-lazy class="h-2 w-2 rounded-full" :src="data.avatar" />
       <span class="text-sm text-zinc-500 ml-1">{{ data.author }}</span>
     </div>
   </div>
@@ -57,7 +61,9 @@
 
 <script setup>
 import { randomRGB } from '@/utils/color'
-defineProps({
+import { saveAs } from 'file-saver'
+
+const props = defineProps({
   data: {
     type: Object,
     required: true
@@ -67,6 +73,16 @@ defineProps({
     default: 0
   }
 })
+
+/**
+ * 下载按钮点击事件
+ */
+const onDownLoad = () => {
+  /**
+   * 1. 下载的图片链接
+   */
+  saveAs(props.data.photoDownLink)
+}
 </script>
 
 <style lang="scss" scoped></style>
