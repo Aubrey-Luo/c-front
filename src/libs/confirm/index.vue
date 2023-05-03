@@ -37,7 +37,8 @@
 </template>
 
 <script setup>
-// 在方法调用的组件中，需要主动导入组件
+// 因为将来 confirm 组件会以方法吊用得形式展示，需要主动导入组件
+// 组件若需以方法调用，都需要主动导入
 import mButton from '../button/index.vue'
 import { ref, onMounted } from 'vue'
 const props = defineProps({
@@ -75,7 +76,7 @@ const props = defineProps({
 })
 
 // 控制显示处理
-const isVisable = ref(false)
+const isVisable = ref(false) // 默认不展示
 /**
  * confirm 展示
  */
@@ -83,6 +84,7 @@ const show = () => {
   isVisable.value = true
 }
 /**
+ * 处理动画（render 函数的渲染，会直接执行）
  * 页面构建完成之后，执行。保留动画
  */
 onMounted(() => {
@@ -96,6 +98,7 @@ const duration = '0.5s'
  */
 const close = () => {
   isVisable.value = false
+  // 延迟一段时间进行关闭，等待动画完全关闭之后，再去触发 props.close
   setTimeout(() => {
     if (props.close) {
       props.close()
@@ -125,6 +128,7 @@ const onConfirmClick = () => {
 </script>
 
 <style lang="scss" scoped>
+// fade 动画 蒙版
 .fade-enter-active,
 .fade-leave-active {
   transition: all v-bind(duration);
@@ -139,7 +143,7 @@ const onConfirmClick = () => {
 .up-leave-active {
   transition: all v-bind(duration);
 }
-
+// 准备进入，离开完成
 .up-enter-from,
 .up-leave-to {
   opacity: 0;
