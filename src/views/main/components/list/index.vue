@@ -13,7 +13,11 @@
         :picturePreReading="false"
       >
         <template v-slot="{ item, width }">
-          <item-vue :data="item" :width="width"></item-vue>
+          <item-vue
+            :data="item"
+            :width="width"
+            @click="onToPins"
+          ></item-vue>
         </template>
       </m-waterfall>
     </m-infinite-list>
@@ -102,6 +106,17 @@ watch(
     })
   }
 )
+
+/**
+ * 进入 pins
+ */
+const onToPins = (item) => {
+  /**
+   * 修改浏览器的 url
+   * 浏览器不会在调用 pushState() 之后尝试加载此 URL
+   */
+  history.pushState(null, null, `/pins/${item.id}`)
+}
 </script>
 
 <style lang="scss" scoped></style>
