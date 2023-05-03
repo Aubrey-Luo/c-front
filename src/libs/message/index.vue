@@ -97,7 +97,7 @@ const styles = {
 }
 
 // 控制显示处理
-const isVisable = ref(false)
+const isVisable = ref(true)
 /**
  * 保证动画展示，需要在 mounted 之后进行展示
  */
