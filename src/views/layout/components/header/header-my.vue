@@ -3,6 +3,7 @@
     <template #reference>
       <div
         class="guide-my relative flex items-center p-0.5 rounded-sm cursor-pointer duration-200 outline-none hover:bg-zinc-100 dark:hover:bg-zinc-900"
+        v-if="false"
       >
         <!-- 头像 -->
         <img
@@ -23,10 +24,18 @@
           name="VIP"
         ></m-svg-icon>
       </div>
+      <div v-else>
+        <m-button
+          class="guide-my"
+          icon="profile"
+          iconColor="#fff"
+          @click="onToLogin"
+        ></m-button>
+      </div>
     </template>
 
     <!-- 气泡内容 -->
-    <div class="w-[140px] overflow-hidden">
+    <div class="w-[140px] overflow-hidden" v-if="false">
       <div
         class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
         v-for="item in menuArr"
@@ -46,6 +55,13 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import { confirm } from '@/libs'
+
+const router = useRouter()
+const store = useStore()
+
 // 构建 menu 数据源
 const menuArr = [
   {
@@ -67,6 +83,13 @@ const menuArr = [
     path: ''
   }
 ]
+
+// 进入登录
+const onToLogin = () => {
+  // 配置跳转方式
+  store.commit('app/changeRouterType', 'push')
+  router.push('/login')
+}
 </script>
 
 <style lang="scss" scoped></style>

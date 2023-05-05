@@ -58,8 +58,9 @@ onMounted(() => {
     // 禁止点击蒙版关闭
     allowClose: false,
     closeBtnText: '关闭',
-    nextBtnText: '下一个',
-    prevBtnText: '上一个'
+    nextBtnText: '下一步',
+    prevBtnText: '上一步',
+    doneBtnText: '完成'
   })
 })
 
