@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '@/store'
 
 const service = axios.create({
   // 根据项目的状态自动切换请求的服务地址
@@ -7,12 +8,21 @@ const service = axios.create({
 })
 
 // 请求拦截器
-service.interceptors.request.use((config) => {
-  // 添加 icode
-  config.headers.icode = '0BCFE77DFEA73516'
-  // 必须返回 config
-  return config
-})
+service.interceptors.request.use(
+  (config) => {
+    if (store.getters.token) {
+      // 如果 token 存在，注入 token
+      config.headers.Authorization = `Bearer ${store.getters.token}`
+    }
+    // 添加 icode
+    config.headers.icode = '0BCFE77DFEA73516'
+    // 必须返回 config
+    return config
+  },
+  (error) => {
+    return Promise.reject(error)
+  }
+)
 
 /**
  * 响应拦截器：
