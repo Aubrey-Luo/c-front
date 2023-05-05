@@ -82,6 +82,75 @@
 </template>
 
 <script setup>
+import headerVue from '../components/header.vue'
+import sliderCaptchaVue from './slider-captcha.vue'
+import {
+  Form as VeeForm,
+  Field as VeeField,
+  ErrorMessage as VeeErrorMessage
+} from 'vee-validate'
+import { validateUsername, validatePassword } from '../validate'
+import { ref } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+import { LOGIN_TYPE_USERNAME } from '@/constants'
+
+const store = useStore()
+const router = useRouter()
+
+// 控制 sliderCaptcha 展示
+const isSliderCaptchaVisible = ref(false)
+
+/**
+ * 登录触发
+ */
+const onLoginHandler = () => {
+  isSliderCaptchaVisible.value = true
+}
+
+/**
+ * 人类行为验证通过
+ */
+const onCaptchaSuccess = async () => {
+  isSliderCaptchaVisible.value = false
+  // 登录操作
+  onLogin()
+}
+
+// 登录时的 loading
+const loading = ref(false)
+
+// 用户输入的用户名和密码
+const loginForm = ref({
+  username: '',
+  password: ''
+})
+
+/**
+ * 用户登录行为
+ */
+const onLogin = async () => {
+  loading.value = true
+  // 执行登录操作
+  try {
+    await store.dispatch('user/login', {
+      ...loginForm.value,
+      loginType: LOGIN_TYPE_USERNAME
+    })
+  } finally {
+    loading.value = false
+  }
+  router.push('/')
+}
+
+/**
+ * 进入注册页面
+ */
+const onToRegister = () => {
+  // 配置跳转方式
+  store.commit('app/changeRouterType', 'push')
+  router.push('/register')
+}
 </script>
 
 <style lang="scss" scoped></style>
