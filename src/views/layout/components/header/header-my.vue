@@ -41,6 +41,7 @@
         class="flex items-center p-1 cursor-pointer rounded hover:bg-zinc-100/60 dark:hover:bg-zinc-800"
         v-for="item in menuArr"
         :key="item.id"
+        @click="onItemClick(item)"
       >
         <m-svg-icon
           :name="item.icon"
@@ -85,11 +86,28 @@ const menuArr = [
   }
 ]
 
-// 进入登录
+/**
+ * 登录按钮点击事件
+ */
 const onToLogin = () => {
   // 配置跳转方式
   store.commit('app/changeRouterType', 'push')
   router.push('/login')
+}
+
+/**
+ * menu 点击事件
+ */
+const onItemClick = (item) => {
+  if (item.id !== 2) return
+  // 退出登录
+  confirm('是否退出登录？')
+    .then(() => {
+      store.dispatch('user/logout')
+    })
+    .catch(() => {
+      console.log('取消退出登录')
+    })
 }
 </script>
 
