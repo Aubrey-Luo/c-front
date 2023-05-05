@@ -3,8 +3,8 @@
   <div class="hidden pt-5 h-8 xl:block">
     <img
       v-lazy
-      class="m-auto"
-      src="https://res.lgdsunday.club/signlogo.png"
+      class="m-auto p-1 rounded-xl bg-nuist"
+      src="https://math.nuist.edu.cn/_upload/site/00/4c/76/logo.png"
       alt=""
     />
   </div>
@@ -18,8 +18,8 @@
     />
     <img
       v-lazy
-      class="h-5 absolute top-[5%] left-[50%] translate-x-[-50%]"
-      src="https://m.imooc.com/static/wap/static/common/img/logo-small@2x.png"
+      class="h-5 absolute top-[5%] left-[50%] translate-x-[-50%] rounded-xl"
+      src="@/assets/images/nuist.jpg"
       alt=""
       srcset=""
     />

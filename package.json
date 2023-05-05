@@ -21,6 +21,7 @@
     "autoprefixer": "^10.4.2",
     "driver.js": "^0.9.8",
     "gsap": "^3.9.1",
+    "md5": "^2.3.0",
     "postcss": "^8.4.8",
     "sass": "^1.45.0",
     "tailwind-scrollbar": "^3.0.0",

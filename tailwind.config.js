@@ -38,7 +38,11 @@ module.exports = {
       },
       backdropBlur: {
         '4xl': '240px'
-      }
+      },
+      backgroundColor: theme => ({
+        ...theme('colors'),
+        'nuist': '#1567B1'
+      })
     }
   },
   plugins: [require('tailwind-scrollbar')]
