@@ -30,6 +30,8 @@ export const validatePassword = (value) => {
 
 /**
  * 确认密码的表单校验
+ * 1、定义方法
+ * 2、注册校验
  */
 export const validateConfirmPassword = (value, password) => {
   if (value !== password[0]) {
