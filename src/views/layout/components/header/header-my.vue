@@ -99,15 +99,18 @@ const onToLogin = () => {
  * menu 点击事件
  */
 const onItemClick = (item) => {
-  if (item.id !== 2) return
-  // 退出登录
-  confirm('是否退出登录？')
-    .then(() => {
-      store.dispatch('user/logout')
-    })
-    .catch(() => {
-      console.log('取消退出登录')
-    })
+  if (item.id === 2) {
+    // 退出登录
+    confirm('是否退出登录？')
+      .then(() => {
+        store.dispatch('user/logout')
+      })
+      .catch(() => {
+        console.log('取消退出登录')
+      })
+    return
+  }
+  router.push(item.path)
 }
 </script>
 
