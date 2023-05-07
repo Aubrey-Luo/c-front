@@ -134,10 +134,10 @@
 
     <!-- PC 端 -->
     <m-dialog v-if="!isMobileTerminal" v-model="isDialogVisible">
-      <!-- <change-avatar-vue
+      <change-avatar-vue
         :blob="currentBolb"
         @close="isDialogVisible = false"
-      ></change-avatar-vue> -->
+      ></change-avatar-vue>
     </m-dialog>
     <!-- 移动端 -->
     <m-popup
@@ -166,7 +166,7 @@ import { message, confirm } from '@/libs'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ref, watch } from 'vue'
-// import changeAvatarVue from './components/change-avatar.vue'
+import changeAvatarVue from './components/change-avatar.vue'
 
 const store = useStore()
 const router = useRouter()
@@ -199,6 +199,8 @@ const onSelectImgHandler = () => {
 }
 
 /**
+ * 当两次选择文件是同一个的时候，change 的回调不会被再次触发
+ * 想要解决这个问题就，只需要在每次选择的图片不再被使用后，清空掉 inputTarget 的 value
  * 监听 dialog 关闭
  */
 watch(isDialogVisible, (val) => {
