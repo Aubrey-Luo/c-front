@@ -121,7 +121,7 @@
           @click="onChangeProfile"
           >保存修改</m-button
         >
-        <!-- 移动端退出登录 -->
+        <!-- 移动端 退出登录 -->
         <m-button
           v-if="isMobileTerminal"
           class="w-full dark:text-zinc-300 dark:bg-zinc-800 xl:w-[160px] xl:ml-[50%] xl:translate-x-[-50%]"
@@ -134,10 +134,10 @@
 
     <!-- PC 端 -->
     <m-dialog v-if="!isMobileTerminal" v-model="isDialogVisible">
-      <change-avatar-vue
+      <!-- <change-avatar-vue
         :blob="currentBolb"
         @close="isDialogVisible = false"
-      ></change-avatar-vue>
+      ></change-avatar-vue> -->
     </m-dialog>
     <!-- 移动端 -->
     <m-popup
@@ -166,7 +166,7 @@ import { message, confirm } from '@/libs'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { ref, watch } from 'vue'
-import changeAvatarVue from './components/change-avatar.vue'
+// import changeAvatarVue from './components/change-avatar.vue'
 
 const store = useStore()
 const router = useRouter()
