@@ -15,7 +15,7 @@ service.interceptors.request.use(
       config.headers.Authorization = `Bearer ${store.getters.token}`
     }
     // 添加 icode
-    config.headers.icode = '0BCFE77DFEA73516'
+    config.headers.icode = '5DDAD1B336D6457E'
     // 必须返回 config
     return config
   },
